@@ -1,0 +1,12 @@
+{
+  "name": "swingalyze-baseline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stable baseline for Swingalyze: correct video fit, overlay mapping, robust pose analysis, smart port.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

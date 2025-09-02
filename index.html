@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swingalyze — Stable Baseline</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Swingalyze</div>
+    <div id="status" class="status">Loading…</div>
+  </header>
+
+  <main class="layout">
+    <section class="left">
+      <div class="stage">
+        <video id="video" playsinline muted></video>
+        <canvas id="overlay"></canvas>
+        <div class="controls">
+          <label class="file-btn">
+            <input id="file" type="file" accept="video/*" />
+            Load Video
+          </label>
+          <button id="demo" title="Load demo clip for quick test">Demo</button>
+          <button id="playpause">Play</button>
+          <button id="reset">Reset</button>
+          <button id="toggleOverlay">Overlay</button>
+        </div>
+      </div>
+      <div class="hud" id="hud">
+        <div><strong>FPS:</strong> <span id="fps">–</span></div>
+        <div><strong>Spine angle:</strong> <span id="spineDeg">–</span></div>
+        <div><strong>Head move (px):</strong> <span id="headMove">–</span></div>
+        <div><strong>Pelvis sway (px):</strong> <span id="sway">–</span></div>
+        <div><strong>Knee flex (°):</strong> <span id="knees">–</span></div>
+        <div><strong>X-Factor (°):</strong> <span id="xfactor">–</span></div>
+      </div>
+    </section>
+
+    <section class="right">
+      <h2>Analysis</h2>
+      <ol id="notes" class="notes"></ol>
+
+      <h3>Session Tools</h3>
+      <div class="tools">
+        <label>Mirror:
+          <input id="mirror" type="checkbox" />
+        </label>
+        <label>Slow-mo:
+          <input id="slow" type="checkbox" />
+        </label>
+      </div>
+
+      <h3>How this build helps</h3>
+      <ul class="bullets">
+        <li>Video always fits — no overflow. Canvas maps exactly to the visible video rect.</li>
+        <li>Pose runs on requestAnimationFrame — smooth & capped for stability.</li>
+        <li>Overlay toggle + mirror + slow‑mo for practical debugging.</li>
+        <li>Heuristic checkpoints for address → backswing → downswing → impact → follow‑through (robust to partial landmarks).</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <small>Baseline 2025‑09‑01 • No placeholders • Designed for Codespaces + iPad</small>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

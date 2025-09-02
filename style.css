@@ -1,0 +1,116 @@
+:root {
+  --bg: #0f1115;
+  --panel: #171922;
+  --ink: #e7e9ee;
+  --muted: #9aa0ae;
+  --accent: #6fb1fc;
+  --good: #36d399;
+  --warn: #f4bf50;
+  --bad: #ff6b6b;
+  --gap: 14px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #0b0d12;
+  border-bottom: 1px solid #1f2330;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.brand { font-weight: 700; letter-spacing: 0.3px; }
+.status { color: var(--muted); }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--gap);
+  padding: var(--gap);
+}
+@media (max-width: 980px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+.left, .right {
+  background: var(--panel);
+  border: 1px solid #222637;
+  border-radius: 10px;
+  padding: var(--gap);
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0a0c12;
+  border: 1px solid #222637;
+  border-radius: 8px;
+  overflow: hidden; /* critical: prevents video overflow */
+}
+
+video, canvas {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  /* We will compute actual draw rect; these keep centering correct */
+}
+
+.controls {
+  position: absolute;
+  left: 8px; bottom: 8px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+.controls button, .file-btn {
+  appearance: none;
+  border: 1px solid #2a3046;
+  background: #141724;
+  color: var(--ink);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.file-btn input { display: none; }
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 14px;
+  padding-top: 10px;
+  color: var(--muted);
+}
+
+.notes {
+  list-style: decimal;
+  padding-left: 18px;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+.bullets {
+  margin: 8px 0 0 16px;
+  padding: 0;
+}
+
+.foot {
+  padding: 16px;
+  text-align: center;
+  color: var(--muted);
+  opacity: 0.8;
+}
